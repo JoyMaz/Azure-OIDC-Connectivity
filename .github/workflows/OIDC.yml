@@ -25,7 +25,6 @@ jobs:
         uses: azure/CLI@v2
         with:
           inlineScript: |
-            az provider register --namespace 'Microsoft.Storage'
             az provider register --namespace 'Microsoft.Network'
 
       # 4. Deploy the ARM Template
