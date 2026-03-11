@@ -20,13 +20,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 3. Pre-emptive Provider Registration (Prevents 'MissingSubscriptionRegistration' error)
-      - name: Register Resource Providers
-        uses: azure/CLI@v2
-        with:
-          inlineScript: |
-            az provider register --namespace 'Microsoft.Network'
-
       # 4. Deploy the ARM Template
       - name: Deploy ARM Template
         uses: azure/arm-deploy@v1
