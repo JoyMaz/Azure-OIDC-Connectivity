@@ -16,7 +16,7 @@ jobs:
 
       # 2. Log into Azure using the JSON Secret
       - name: Azure Login
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
