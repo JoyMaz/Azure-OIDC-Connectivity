@@ -1,7 +1,38 @@
-- name: Deploy Secure Infrastructure
-  uses: azure/arm-deploy@v1
-  with:
-    subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    [cite_start]resourceGroupName: 'ResourceofJoy' # Use your existing RG [cite: 25]
-    template: ./azuredeploy.json
-    parameters: storageAccountName=joyprojectslink123
+name: Project 4 - End-to-End Secure Deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows you to run this manually from the Actions tab
+
+jobs:
+  deploy-infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the code from your repo
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Log into Azure using the JSON Secret
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Pre-emptive Provider Registration (Prevents 'MissingSubscriptionRegistration' error)
+      - name: Register Resource Providers
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az provider register --namespace 'Microsoft.Storage'
+            az provider register --namespace 'Microsoft.Network'
+
+      # 4. Deploy the ARM Template
+      - name: Deploy ARM Template
+        uses: azure/arm-deploy@v1
+        with:
+          resourceGroupName: 'ResourceofJoy' # Ensure this RG exists in Azure
+          template: ./OIDC.json
+          parameters: storageAccountName=joycloudproject${{ github.run_number }}
+          failOnStdErr: false
