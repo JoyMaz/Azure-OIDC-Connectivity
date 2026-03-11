@@ -1,2 +1,1 @@
-# Test-Repository
-Test Repository By Joy
+# OIDC connectinity for Azure VM,VNet,Loadbalancer
