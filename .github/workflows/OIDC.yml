@@ -1,0 +1,7 @@
+- name: Deploy Secure Infrastructure
+  uses: azure/arm-deploy@v1
+  with:
+    subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    [cite_start]resourceGroupName: 'ResourceofJoy' # Use your existing RG [cite: 25]
+    template: ./azuredeploy.json
+    parameters: storageAccountName=joyprojectslink123
