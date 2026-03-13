@@ -19,7 +19,7 @@
     "variables": {
         "vnetName": "Project4VNet",
         "subnetName": "BackendSubnet",
-        "lbName": "Project4LoadBalancer",
+     //   "lbName": "Project4LoadBalancer",
         "vaultName": "[concat('vault-', uniqueString(resourceGroup().id))]"
     },
     "resources": [
