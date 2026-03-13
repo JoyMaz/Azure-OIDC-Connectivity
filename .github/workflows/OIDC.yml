@@ -26,5 +26,9 @@ jobs:
         with:
           resourceGroupName: 'ResourceofJoy' # Ensure this RG exists in Azure
           template: ./OIDC.json
-          parameters: storageAccountName=joycloudproject${{ github.run_number }}
+          parameters: >
+            vmName="Project4VM"
+            adminUsername="azureuser"
+            adminPassword=${{ secrets.VM_ADMIN_PASSWORD }}
+            location="eastus"
           failOnStdErr: false
