@@ -62,7 +62,7 @@
             "name": "[parameters('vmName')]",
             "location": "[parameters('location')]",
             "properties": {
-                "hardwareProfile": { "vmSize": "Standard_B1s" },
+                "hardwareProfile": { "vmSize": "Standard_B1ms" },
                 "storageProfile": {
                     "imageReference": {
                         "publisher": "Canonical",
